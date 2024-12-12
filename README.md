@@ -29,19 +29,10 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 
 ## Exercises
 
-### **EXERCISE 1**  
-
-## 📝 **Description**  
-
 ### **1: For Each Dataset**  
 - **Print the number of rows and columns**  
 - **Display the column names and their data types**  
 🎉
-
-
-### **EXERCISE 2**  
-
-## 📝 **Description**  
 
 ### **2: Extract Rows for 2023**  
 - **Filter all rows where the date is in the year 2023**  
@@ -49,31 +40,17 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 - **Visualize the Close price trend for this period**  
 🎉
 
-
-### **EXERCISE 3**  
-
-## 📝 **Description**  
-
 ### **3: Find the Day with Highest Close Price**  
 - **For each company, identify the day with the highest Close price**  
 - **Display the date and the corresponding Close price**  
 🎉
 
 
-### **EXERCISE 4**  
-
-## 📝 **Description**  
-
 ### **4: Monthly Average Close Price Analysis**  
 - **Group the data by month and calculate the average Close price for each company**  
 - **Plot these monthly averages for 3 companies and compare them**  
 - **Justify the chart selection**  
 🎉
-
-
-### **EXERCISE 5**  
-
-## 📝 **Description**  
 
 ### **5: Yearly Average Close Price Comparison**  
 - **For each company:**  
@@ -82,20 +59,10 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 - **Justify your chart selection**  
 🎉
 
-
-### **EXERCISE 6**  
-
-## 📝 **Description**  
-
 ### **6: Monthly Price Range Visualization**  
 - **For each company, create a plot showing the range of prices for each month**  
 - **Justify the chart selection**  
 🎉
-
-
-### **EXERCISE 7**  
-
-## 📝 **Description**  
 
 ### **7: Relationship Between Trading Volume and Close Price**  
 - **Create a plot showing the relationship between trading volume and the Close price for a selected company**  
@@ -103,30 +70,17 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 - **Justify your chart selection**  
 🎉
 
-
-### **EXERCISE 8**  
-
-## 📝 **Description**  
-
 ### **8: Month with Highest Total Trading Volume**  
 - **For each company, identify the month with the highest total trading volume**  
 - **Display the results in a summary table, showing the month and total volume**  
 🎉
 
 
-### **EXERCISE 9**  
-
-## 📝 **Description**  
-
 ### **9: Merging Datasets by Year**  
 - **Merge the datasets for all companies into a single dataset, one for each year**  
 - **Print the structure of the combined dataset, ensuring proper alignment and handling of missing values**  
 🎉
 
-
-### **EXERCISE 10**  
-
-## 📝 **Description**  
 
 ### **10: Daily Price Spread Analysis**  
 - **For each company:**  
