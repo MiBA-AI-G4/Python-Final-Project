@@ -30,7 +30,6 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 ## Exercises
 
 ### **EXERCISE 1**  
----
 
 ## 📝 **Description**  
 
@@ -39,10 +38,8 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 - **Display the column names and their data types**  
 🎉
 
----
 
 ### **EXERCISE 2**  
----
 
 ## 📝 **Description**  
 
@@ -52,10 +49,8 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 - **Visualize the Close price trend for this period**  
 🎉
 
----
 
 ### **EXERCISE 3**  
----
 
 ## 📝 **Description**  
 
@@ -64,10 +59,8 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 - **Display the date and the corresponding Close price**  
 🎉
 
----
 
 ### **EXERCISE 4**  
----
 
 ## 📝 **Description**  
 
@@ -77,10 +70,8 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 - **Justify the chart selection**  
 🎉
 
----
 
 ### **EXERCISE 5**  
----
 
 ## 📝 **Description**  
 
@@ -91,10 +82,8 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 - **Justify your chart selection**  
 🎉
 
----
 
 ### **EXERCISE 6**  
----
 
 ## 📝 **Description**  
 
@@ -103,10 +92,8 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 - **Justify the chart selection**  
 🎉
 
----
 
 ### **EXERCISE 7**  
----
 
 ## 📝 **Description**  
 
@@ -116,10 +103,8 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 - **Justify your chart selection**  
 🎉
 
----
 
 ### **EXERCISE 8**  
----
 
 ## 📝 **Description**  
 
@@ -128,10 +113,8 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 - **Display the results in a summary table, showing the month and total volume**  
 🎉
 
----
 
 ### **EXERCISE 9**  
----
 
 ## 📝 **Description**  
 
@@ -140,10 +123,8 @@ Before conducting any analysis, several preprocessing steps were applied to ensu
 - **Print the structure of the combined dataset, ensuring proper alignment and handling of missing values**  
 🎉
 
----
 
 ### **EXERCISE 10**  
----
 
 ## 📝 **Description**  
 
