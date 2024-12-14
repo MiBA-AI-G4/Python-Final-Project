@@ -1,0 +1,8 @@
+{
+  "queryStringParameters": {
+    "lead_time": "150",
+    "adr": "210",
+    "previous_cancellations": "1",
+    "booking_changes": "2"
+  }
+}

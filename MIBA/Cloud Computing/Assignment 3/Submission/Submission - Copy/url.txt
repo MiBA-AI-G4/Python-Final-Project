@@ -1,0 +1,1 @@
+https://dabmzoepwh.execute-api.us-east-1.amazonaws.com/predict?lead_time=200&previous_cancellations=2&adr=80&booking_changes=0

@@ -1,0 +1,29 @@
+## PRE-PROGRAMME: TO R
+## LAST RETAKE
+
+# Please, read carefully these instructions and answer the questions below using R code:
+# Import the necessary libraries to complete the tasks.
+# If you need to insert comments in your script use #
+# Save the script (the script has to be fully executable by me) with the questions and answers and send it by email to: ruben.coca@esade.edu
+# Import the csv file loan_data.csv that you downloaded from the Moodle and stored in the 
+# ./DATA/ folder of your RStudio project. Create the object df to do so.
+
+
+## QUESTIONS:
+# Q1 (1 point) Compute the average of loan_amnt.
+
+# Q2 (1 point) How many different/unique values has the variable purpose?
+
+# Q3 (1.5 points) Create a new object called df2 keeping only rows in df that meet this condition: home_ownership is 'RENT' or purpose is not 'educational'
+
+# Q4 (1.5 points) Plot a histogram showing the distribution of variable annual_inc.
+
+# Q5 (2.5 points) Create a new object called df3 that is the result of computing the standard deviation of int_rate for any different value in home_ownership. Order results in ascending order.
+
+# Q6 (2.5 points) Using ggplot2 library, create a line plot showing the evolution of defaults over time (issue_date). Transform data before plotting, if necessary.
+
+library(ggplot2)
+library(dplyr)
+
+df <- read.csv("./DATA/loan_data.csv")
+

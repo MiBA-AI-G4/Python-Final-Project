@@ -1,0 +1,35 @@
+library(tidyverse)
+
+data(band_members)
+data(band_instruments)
+
+left_join(x = band_members, y = band_instruments, by = 'name')
+
+full_join(x = band_members, y = band_instruments, by = 'name')
+
+anti_join(x = band_members, y = band_instruments, by = 'name')
+
+global = global_indicators
+region = country_region_catincome
+
+global_merged = left_join(x = global, y = region, by = c('country' = 'country_code'))
+
+
+
+global_final_group = global_merged %>%
+  select(country, year, population) %>%
+  #filter(country == 'ESP' | country == 'FRA' | country == 'ITA')
+  filter(country %in% c('ESP', 'FRA', 'ITA')) %>%
+  #filter(country %in% filter_countries) %>%
+  group_by(country) %>%
+  arrange(country, year)
+  mutate(avg_pop = mean(population, na.rm = TRUE),
+          diff = population - avg_pop,
+          sign = case_when(diff > 0 ~ 'POSITIVE',
+                           diff < 0 ~ 'NEGATIVE',
+                           .default = 'NEUTRAL'))
+  
+ggplot(data = global_final_group,
+       mapping = aes(x = year, population))
+  geom_line()
+    

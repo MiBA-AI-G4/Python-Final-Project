@@ -1,0 +1,1 @@
+https://01og9k5o7l.execute-api.eu-north-1.amazonaws.com/v1/Booking_Prediction?lead_time=100&previous_cancellations=1&days_in_waiting_list=0&booking_changes=1

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Cinema Screen</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For charts -->
+    <style>
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Cinema Screen Layout */
+        .cinema-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .cinema-screen {
+            background: linear-gradient(135deg, #8b0000, #550000);
+            width: 80%;
+            height: 150px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .seats-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            width: 80%;
+        }
+
+        .seat {
+            width: 100%;
+            height: 50px;
+            background: #333;
+            border-radius: 5px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .seat:hover {
+            background: #ff4d4d;
+            transform: scale(1.1);
+        }
+
+        .seat.active {
+            background: #ff4d4d;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: #222;
+            color: white;
+            padding: 30px;
+            margin-top: 20px;
+            width: 80%;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .form-group input,
+        .form-group select {
+            background: #333;
+            color: white;
+        }
+
+        .form-group button {
+            background: #ff4d4d;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background: #ff1a1a;
+        }
+
+        /* Prediction Output */
+        .prediction-output {
+            background: #444;
+            color: #ff4d4d;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cinema Screen -->
+    <div class="cinema-container">
+        <div class="cinema-screen" id="cinema-screen">
+            Cinema Screen
+        </div>
+
+        <!-- Interactive Seats -->
+        <div class="seats-container">
+            <div class="seat" onclick="selectSeat(this)">Seat 1</div>
+            <div class="seat" onclick="selectSeat(this)">Seat 2</div>
+            <div class="seat" onclick="selectSeat(this)">Seat 3</div>
+            <div class="seat" onclick="selectSeat(this)">Seat 4</div>
+            <div class="seat" onclick="selectSeat(this)">Seat 5</div>
+            <div class="seat" onclick="selectSeat(this)">Seat 6</div>
+        </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section" id="form-section">
+        <h3>Enter Movie Details</h3>
+        <form id="movie-form">
+            <div class="form-group">
+                <label for="genre">Genre:</label>
+                <select id="genre" name="genre" required>
+                    <option value="">Select Genre</option>
+                    <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Animation">Animation</option>
+                    <option value="Horror">Horror</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="director">Director:</label>
+                <input type="text" id="director" name="director" placeholder="e.g., Christopher Nolan" required>
+            </div>
+            <div class="form-group">
+                <label for="cast">Cast:</label>
+                <input type="text" id="cast" name="cast" placeholder="e.g., Angelina Jolie" required>
+            </div>
+            <div class="form-group">
+                <label for="release-date">Release Date:</label>
+                <input type="date" id="release-date" name="release-date" required>
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="generatePrediction()">Generate Prediction</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Prediction Output -->
+    <div class="prediction-output" id="prediction-output">
+        <h4>Predicted Revenue: <span id="revenue">$0.00</span></h4>
+    </div>
+
+    <script>
+        // Select a seat
+        function selectSeat(seat) {
+            document.querySelectorAll('.seat').forEach(s => s.classList.remove('active'));
+            seat.classList.add('active');
+            document.getElementById('form-section').style.display = 'block';
+        }
+
+        // Generate prediction
+        function generatePrediction() {
+            const revenue = Math.floor(Math.random() * 1000000000);
+            document.getElementById('revenue').innerText = `$${revenue.toLocaleString()}`;
+            document.getElementById('prediction-output').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

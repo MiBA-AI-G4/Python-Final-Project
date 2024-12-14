@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Revenue Predictor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For charts -->
+    <style>
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+             <!-- Curtains Effect -->
+             <div id="curtain-container" class="curtain-container">
+                <div class="curtain curtain-left"></div>
+                <div class="curtain curtain-right"></div>
+            </div>
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #8b0000, #550000);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        header .logo {
+            font-weight: bold;
+            color: #ff4d4d;
+        }
+
+        header nav {
+            font-size: 1rem;
+        }
+
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #ff4d4d;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .dark-mode-toggle:hover {
+            background: #555;
+        }
+
+        /* Main Section */
+        main {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .scrolling-images {
+            flex: 1;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .scrolling-images img {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            animation: scroll 15s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        /* Form Section */
+        .form-section {
+            flex: 2;
+            background: #8b0000;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-section h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            background: #550000;
+            color: white;
+        }
+
+        .form-group button {
+            background-color: #ff4d4d;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #ff1a1a;
+            transform: scale(1.05);
+        }
+
+        .prediction-output {
+            margin-top: 20px;
+            padding: 15px;
+            background: #333;
+            color: #ff4d4d;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .poster-generator {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .poster-generator img {
+            max-width: 80%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        /* Charts Section */
+        .charts-section {
+            background-color: #1a1a1a;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .chart-container {
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: #222;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .chart-container canvas {
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: #550000;
+            padding: 10px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1><span class="logo">🎥 MRP</span> - Movie Revenue Predictor</h1>
+        <nav>
+
+        </nav>
+    </header>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Left Scrolling Images -->
+        <div class="scrolling-images scrolling-left">
+            <img src="https://source.unsplash.com/300x600/?actor,celebrity" alt="Actor">
+            <img src="https://source.unsplash.com/300x600/?film-actor" alt="Film Actor">
+            <img src="https://source.unsplash.com/300x600/?star" alt="Star">
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-section">
+            <h3>Enter Movie Details</h3>
+            <form id="movie-form">
+                <div class="form-group">
+                    <label for="genre">Genre:</label>
+                    <select id="genre" name="genre" required>
+                        <option value="">Select Genre</option>
+                        <option value="Action">Action</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Horror">Horror</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="director">Director:</label>
+                    <input type="text" id="director" name="director" placeholder="e.g., Christopher Nolan" required>
+                </div>
+                <div class="form-group">
+                    <label for="cast">Cast:</label>
+                    <input type="text" id="cast" name="cast" placeholder="e.g., Angelina Jolie" required>
+                </div>
+                <div class="form-group">
+                    <label for="producer">Producer:</label>
+                    <input type="text" id="producer" name="producer" placeholder="e.g., Disney" required>
+                </div>
+                <div class="form-group">
+                    <label for="release-date">Release Date:</label>
+                    <input type="date" id="release-date" name="release-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="keywords">Keywords:</label>
+                    <input type="text" id="keywords" name="keywords" placeholder="e.g., Blockbuster, Independent">
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="generatePrediction()">Generate Prediction</button>
+                </div>
+            </form>
+
+            <div id="prediction-output" class="prediction-output">
+                <h4>Predicted Revenue: <span id="revenue">$0.00</span></h4>
+            </div>
+
+            <div class="poster-generator">
+                <h4>Your Movie Poster:</h4>
+                <img id="movie-poster" src="" alt="Movie Poster">
+            </div>
+        </div>
+
+        <!-- Right Scrolling Images -->
+        <div class="scrolling-images scrolling-right">
+            <img src="https://source.unsplash.com/300x600/?movie-poster" alt="Poster">
+            <img src="https://source.unsplash.com/300x600/?cinema" alt="Cinema">
+            <img src="https://source.unsplash.com/300x600/?film" alt="Film">
+        </div>
+    </main>
+
+    <!-- Charts Section -->
+    <section class="charts-section">
+        <div class="chart-container">
+            <canvas id="revenue-chart"></canvas>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Movie Revenue Predictor. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function generatePrediction() {
+            const revenue = Math.floor(Math.random() * 1000000000);
+            document.getElementById("revenue").innerText = `$${revenue.toLocaleString()}`;
+            document.getElementById("prediction-output").style.display = "block";
+
+            // Generate Movie Poster
+            const genre = document.getElementById("genre").value || "movie";
+            document.getElementById("movie-poster").src = `https://source.unsplash.com/600x900/?${genre}`;
+
+            // Chart.js Revenue Chart
+            const ctx = document.getElementById("revenue-chart").getContext("2d");
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['North America', 'Europe', 'Asia', 'Other Regions'],
+                    datasets: [{
+                        label: 'Revenue (in $)',
+                        data: [
+                            Math.floor(revenue * 0.4),
+                            Math.floor(revenue * 0.3),
+                            Math.floor(revenue * 0.2),
+                            Math.floor(revenue * 0.1)
+                        ],
+                        backgroundColor: ['#ff4d4d', '#ff6f6f', '#ff9999', '#ffcccc'],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle("dark-mode");
+            body.style.backgroundColor = body.classList.contains("dark-mode") ? "#fff" : "#1a1a1a";
+            body.style.color = body.classList.contains("dark-mode") ? "#000" : "#fff";
+        }
+    </script>
+</body>
+</html>
