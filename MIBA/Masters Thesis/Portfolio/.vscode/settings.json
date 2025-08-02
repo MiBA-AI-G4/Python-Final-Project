@@ -1,5 +1,0 @@
-{
-    "python.analysis.extraPaths": [
-        "./macro-forecast-allocator/src/models/Layer 1/arima_"
-    ]
-}
